@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XApp1"          
+             x:Class="XApp1.MainPage">
+
+
+    <Grid BackgroundColor="Black">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.8*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <StackLayout  Grid.Column="1" 
+               Grid.Row="2">
+            <Label 
+               Text="{Binding ClockLabel}" 
+               FontSize="60"
+               FontAttributes="Bold" 
+               TextColor="White"
+               HorizontalTextAlignment="End"/>
+            <Label 
+               Text="{Binding DateLabel}" 
+               FontSize="50"
+               FontAttributes="Bold"  
+               TextColor="White"
+               HorizontalTextAlignment="End"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="0" Grid.RowSpan="3">
+            <Label Text="TRENUTNO" TextColor="CadetBlue" HorizontalTextAlignment="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Image Source="{Binding WeatherDataProp.IconUrl}"/>
+                <Label Text="{Binding Temp}" TextColor="White" FontSize="40"/>
+                
+                <StackLayout>
+                    <Label Text="{Binding Pressure}" TextColor="White"/>
+                    <Label Text="{Binding Humidity}" TextColor="White"/>
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="{Binding WindSpeed}" TextColor="White"/>
+                    <Label Text="{Binding Sunset}" TextColor="White"/>
+                    <Label Text="{Binding Sunrise}" TextColor="White"/>
+                </StackLayout>
+
+            </StackLayout>
+            
+            <Label Text="{Binding Description}" TextColor="White" FontSize="30"/>
+
+            <Label Text="PROGNOZA" TextColor="CadetBlue" HorizontalTextAlignment="Center" Margin="0,20,0,0"/>
+            
+            <ListView x:Name="listViewForecast" />
+
+        </StackLayout>
+
+    </Grid>
+
+    <!--
+    <Grid Background="Black">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.8*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="30"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition MaxHeight="120"/>
+        </Grid.RowDefinitions>
+ 
+
+
+        <Label Grid.ColumnSpan="2" Text="Status" x:Name="txtStatus" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Content="..." x:Name="btnStatus" Grid.Column="1" Width="40" HorizontalAlignment="Right" VerticalAlignment="Stretch" Background="Black" FontWeight="Bold" Foreground="White"/>
+        </StackLayout>
+
+        <StackLayout Grid.Row="1" Grid.RowSpan="2">
+            <Label Text="TRENUTNO" Foreground="CadetBlue"/>
+            <StackLayout>
+                <Image Source="{Binding weatherData.IconUrl}" Width="70" Height="70"/>
+                <Label Text="{Binding weatherData.Temp}" FontSize="50"/>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding weatherData.TempMin, StringFormat=Min: {0:C}}" Margin="10,0,0,0"/>
+                    <Label Text="{Binding weatherData.TempMax, StringFormat=Max: {0:C}}" Margin="10,0,0,0"/>
+                    <Label Text="{Binding weatherData.Pressure, StringFormat=Tlak: {0:C}}" Margin="10,0,0,0"/>
+                    <Label Text="{Binding weatherData.Humidity, StringFormat=Vlaga: {0:C}}" Margin="10,0,0,0"/>
+                    <Label Text="{Binding weatherData.WindSpeed, StringFormat=Vjetar: {0:C}}" Margin="10,0,0,0"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="{Binding weatherData.Description}" FontSize="25" TextWrapping="Wrap" Margin="5,0,0,0" HorizontalAlignment="Center"/>
+            <Label Text="{Binding weatherData.Sunrise, StringFormat=Izlazak: {0:C}}" TextWrapping="Wrap" Margin="5,0,0,0" HorizontalAlignment="Center"/>
+            <Label Text="{Binding weatherData.Sunset, StringFormat=Zalazak: {0:C}}" TextWrapping="Wrap" Margin="5,0,0,0" HorizontalAlignment="Center"/>
+
+            <Label Text="PROGNOZA" Foreground="CadetBlue" Margin="0,20,0,0"/>
+            -->
+    <!--<DataGrid ItemsSource="{Binding Path=forecast}" AutoGenerateColumns="False" Margin="5,5,5,0" Background="Black" Foreground="Black" IsReadOnly="True" Height="265">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Datum i vrijeme" Binding="{Binding Dt}"/>
+                    <DataGridTextColumn Header="Opis" Binding="{Binding Description}"/>
+                    <DataGridTextColumn Header="Temp" Binding="{Binding Temp}"/>
+                    <DataGridTextColumn Header="Vjetar" Binding="{Binding WindSpeed}"/>
+                </DataGrid.Columns>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="CadetBlue"/>
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="Background" Value="Black"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>-->
+    <!--
+        </StackLayout>
+
+        <Image Grid.Column="1" Grid.Row="1" x:Name="imgPhoto" Margin="5,5,5,5" Source="/Resources/Original-JPG-Image.jpg"/>
+
+        <StackLayout Grid.Column="1" Grid.Row="2" Background="Black" HorizontalAlignment="Right">
+            <StackLayout>
+                <Label x:Name="txtDay" Text="Nedjelja" FontSize="20" />
+                <Label x:Name="txtDate" Text="01.01.17" FontSize="40" Margin="10,0,0,0"/>
+            </StackLayout>
+            <Label x:Name="txtTime" Text="{Binding ClockLabel}" FontSize="60" FontWeight="Bold" Margin="20,0,10,0"/>
+        </StackLayout>
+    </Grid>-->
+</ContentPage>
